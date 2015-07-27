@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="nrv.costs.dao.CostDao">
     <insert id="insert" parameterType="nrv.costs.domain.Cost">
-        insert into cost(id, description, date, amount, id_category)
-        values((select max(id) from category) + 1, #{description}, #{date}, #{amount}, (select id from category where type = #{type}))
+        insert into cost(description, date, amount, id_category)
+        values(#{description}, #{date}, #{amount}, (select id from category where type = #{type}))
     </insert>
 
 </mapper>

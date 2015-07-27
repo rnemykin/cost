@@ -3,8 +3,8 @@
 <mapper namespace="nrv.costs.dao.CategoryDao">
 
     <insert id="insert" parameterType="nrv.costs.domain.Category">
-        insert into category(id, type, tags)
-        values((select max(id) + 1 from category), #{type}, #{tags})
+        insert into category(type, tags)
+        values(#{type}, #{tags})
     </insert>
 
 </mapper>
