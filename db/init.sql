@@ -14,6 +14,13 @@ CREATE TABLE cost
   FOREIGN KEY (id_category) REFERENCES category(id) on delete CASCADE
 );
 
+CREATE TABLE income
+(
+  id INTEGER PRIMARY KEY,
+  date DATETIME NOT NULL,
+  amount REAL NOT NULL,
+  description TEXT NULL
+);
 
 -- data
 insert into category (type, tags) values('CLOTHES', 'Одежда');
