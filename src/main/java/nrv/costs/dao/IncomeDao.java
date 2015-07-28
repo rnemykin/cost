@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IncomeDao {
-    public int insert(Income income);
+    int insert(Income income);
 }

@@ -1,14 +1,24 @@
 package nrv.costs.domain;
 
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
+
+import java.math.BigDecimal;
 
 public class Cost {
     private Integer id;
     private String description = "";
     private DateTime date = new DateTime();
-    private Double amount;
-    private Category category;
+    private BigDecimal amount;
+    private Category.Type category;
+
+    public Cost() {
+    }
+
+    public Cost(BigDecimal amount, Category.Type category, String description) {
+        this.amount = amount;
+        this.category = category;
+        this.description = description;
+    }
 
     public Integer getId() {
         return id;
@@ -34,19 +44,19 @@ public class Cost {
         this.date = date;
     }
 
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public Category getCategory() {
+    public Category.Type getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(Category.Type category) {
         this.category = category;
     }
 }
