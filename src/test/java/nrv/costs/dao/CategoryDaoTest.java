@@ -1,12 +1,12 @@
 package nrv.costs.dao;
 
-import nrv.costs.BaseTest;
+import nrv.costs.RollBackTransactionTest;
 import nrv.costs.domain.Category;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class CategoryDaoTest extends BaseTest {
+public class CategoryDaoTest extends RollBackTransactionTest {
 
     @Autowired
     private CategoryDao dao;

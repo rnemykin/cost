@@ -1,6 +1,6 @@
 package nrv.costs.dao;
 
-import nrv.costs.BaseTest;
+import nrv.costs.RollBackTransactionTest;
 import nrv.costs.domain.Category;
 import nrv.costs.domain.Cost;
 import org.junit.Assert;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
-public class CostDaoTest extends BaseTest {
+public class CostDaoTest extends RollBackTransactionTest {
 
     @Autowired
     private CostDao dao;
