@@ -3,9 +3,11 @@ package nrv.costs.domain;
 
 import org.joda.time.DateTime;
 
+import java.math.BigDecimal;
+
 public class Income {
     private Integer id;
-    private Double amount;
+    private BigDecimal amount;
     private DateTime date = new DateTime();
     private String description;
 
@@ -13,7 +15,7 @@ public class Income {
     public Income() {
     }
 
-    public Income(Double amount, String description) {
+    public Income(BigDecimal amount, String description) {
         this.amount = amount;
         this.description = description;
     }
@@ -27,11 +29,11 @@ public class Income {
         this.id = id;
     }
 
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CategoryDao {
-    void insert(Category category);
+    int insert(Category category);
 }
