@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nrv.costs.dao.statistics.impl.CostStatisticsDao">
+
+    <resultMap id="costMap" type="nrv.costs.domain.Cost">
+        <id property="id" column="id"/>
+        <result property="description" column="description"/>
+        <result property="date" column="date"/>
+        <result property="amount" column="amount"/>
+        <result property="category" column="type"/>
+    </resultMap>
+
+    <select id="getByCategory" parameterType="string" resultMap="costMap">
+        SELECT
+          c.id, c.date, c.description, c.amount, cat.type category
+        FROM cost c
+        JOIN category cat ON c.id_category=cat.id
+        WHERE cat.type = #{value}
+    </select>
+
+</mapper>

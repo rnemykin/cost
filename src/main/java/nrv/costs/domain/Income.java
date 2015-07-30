@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 
 import java.math.BigDecimal;
 
-public class Income {
+public class Income implements Audit {
     private Integer id;
     private BigDecimal amount;
     private DateTime date = new DateTime();
@@ -21,6 +21,7 @@ public class Income {
     }
 
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -29,6 +30,7 @@ public class Income {
         this.id = id;
     }
 
+    @Override
     public BigDecimal getAmount() {
         return amount;
     }
@@ -37,6 +39,7 @@ public class Income {
         this.amount = amount;
     }
 
+    @Override
     public DateTime getDate() {
         return date;
     }
@@ -45,6 +48,7 @@ public class Income {
         this.date = date;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
