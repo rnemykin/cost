@@ -25,7 +25,7 @@ public class CostStatisticsService extends BaseStatisticsService<Cost, CostStati
 
     @Override
     public CostStatistics getByCategory(Category.Type category) {
-        List<Cost> costs = statisticsDao.getByCategory(category.name());//todo enum type handler
+        List<Cost> costs = statisticsDao.getByCategory(category);
         BigDecimal amountSum = calculateAmountSum(costs);
         return new CostStatistics(costs, amountSum);
     }

@@ -16,7 +16,7 @@ public class CostDaoTest extends RollBackTransactionTest {
 
     @Test
     public void testInsert() {
-        int id = dao.insert(new Cost(BigDecimal.valueOf(310), Category.Type.FOOD, "Продукты"));
+        int id = dao.insert(new Cost(BigDecimal.valueOf(25), Category.Type.TRANSPORT, "Продукты"));
         Assert.assertNotNull("Id is null", id);
     }
 
