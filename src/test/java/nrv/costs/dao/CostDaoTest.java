@@ -1,22 +1,24 @@
 package nrv.costs.dao;
 
-import nrv.costs.RollBackTransactionTest;
+import nrv.costs.BaseTest;
 import nrv.costs.domain.Category;
 import nrv.costs.domain.Cost;
+import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
-public class CostDaoTest extends RollBackTransactionTest {
+public class CostDaoTest extends BaseTest {
 
     @Autowired
     private CostDao dao;
 
     @Test
     public void testInsert() {
-        int id = dao.insert(new Cost(BigDecimal.valueOf(310), Category.Type.FOOD, "Продукты"));
+        DateTime dt = FORMATTER.parseDateTime("4-08-2015");
+        int id = dao.insert(new Cost(BigDecimal.valueOf(100), Category.Type.MOBILE_NET, "", dt));
         Assert.assertNotNull("Id is null", id);
     }
 
