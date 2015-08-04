@@ -5,15 +5,46 @@ import nrv.costs.domain.Audit;
 import nrv.costs.domain.statistics.Statistics;
 import nrv.costs.servce.StatisticsService;
 import org.joda.time.DateTime;
+import org.joda.time.LocalTime;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public abstract class BaseStatisticsService<T extends Audit, V extends Statistics> implements StatisticsService<V> {
+public abstract class BaseStatisticsService<T extends Audit, V extends Statistics> implements StatisticsService<T, V> {
 
     protected StatisticsDao<T> statisticsDao;
 
     protected abstract void setStatisticsDao(StatisticsDao<T> statisticsDao);
+
+    @Override
+    public List<T> getFromDate(DateTime from) {
+        return statisticsDao.getFromToDate(from, new DateTime());
+    }
+
+    @Override
+    public List<T> getForCurrentWeek() {
+        DateInterval week = get4Week();
+        return statisticsDao.getFromToDate(week.from, week.to);
+    }
+
+    @Override
+    public List<T> getForMonth(DateTime startMonthDate) { //  todo may be int month
+        DateInterval month = get4Month(startMonthDate);
+        return statisticsDao.getFromToDate(month.from, month.to);
+    }
+
+    public DateInterval get4Week() {
+        DateTime now = DateTime.now().withTimeAtStartOfDay();
+        DateTime from = now.dayOfWeek().withMinimumValue();
+        DateTime to = now.dayOfWeek().withMaximumValue().withTime(new LocalTime(23, 59 ,59));
+        return new DateInterval(from, to);
+    }
+
+    protected DateInterval get4Month(DateTime startMonthDate) {
+        DateTime from = startMonthDate.withTimeAtStartOfDay();
+        DateTime to = startMonthDate.dayOfMonth().withMaximumValue().withTime(new LocalTime(23, 59, 59));
+        return new DateInterval(from, to);
+    }
 
     protected BigDecimal calculateAmountSum(List<T> audits) {
         BigDecimal sum = BigDecimal.ZERO;
@@ -24,17 +55,8 @@ public abstract class BaseStatisticsService<T extends Audit, V extends Statistic
         return sum;
     }
 
-    protected DateInterval get4Week() {
-        DateTime now = new DateTime();
-        return new DateInterval(now.dayOfWeek().withMinimumValue(), now.dayOfWeek().withMaximumValue());
-    }
 
-    protected DateInterval get4Month(DateTime startMonthDate) {
-        return new DateInterval(startMonthDate, startMonthDate.dayOfMonth().withMaximumValue());
-    }
-
-
-    class DateInterval {
+    private static class DateInterval {
         DateTime from;
         DateTime to;
 

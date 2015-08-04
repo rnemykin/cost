@@ -26,6 +26,5 @@ public class CostStatisticsDaoTest extends BaseTest {
         DateTime from = FORMATTER.parseDateTime("1-07-2015");
 
         costStatisticsDao.getFromToDate(from, new DateTime());
-        //  todo create getFromDate(DateTime)
     }
 }
