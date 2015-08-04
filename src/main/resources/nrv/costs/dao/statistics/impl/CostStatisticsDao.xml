@@ -10,7 +10,7 @@
         <result property="category" column="type"/>
     </resultMap>
 
-    <select id="getByCategory" parameterType="string" resultMap="costMap">
+    <select id="getByCategory" resultMap="costMap">
         SELECT
           c.id, c.date, c.description, c.amount, cat.type category
         FROM cost c

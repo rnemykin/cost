@@ -18,7 +18,7 @@ public class CostStatisticsDaoTest extends BaseTest {
 
     @Test
     public void testGetByCategory() {
-        List<Cost> costs = costStatisticsDao.getByCategory(Category.Type.FOOD.name());
+        List<Cost> costs = costStatisticsDao.getByCategory(Category.Type.FOOD);
     }
 
     @Test
