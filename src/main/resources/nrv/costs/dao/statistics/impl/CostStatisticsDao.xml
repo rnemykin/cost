@@ -25,7 +25,7 @@
 
     <select id="getFromToDate" resultMap="costMap">
         <include refid="baseSelect"/>
-        <![CDATA[ WHERE c.date <= #{from} AND c.date >= #{to} ]]>
+        <![CDATA[ WHERE c.date >= #{from} AND c.date <= #{to} ]]>
     </select>
 
 </mapper>
