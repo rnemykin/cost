@@ -4,8 +4,12 @@
 <mapper namespace="nrv.costs.dao.CostDao">
 
     <insert id="insert" parameterType="nrv.costs.domain.Cost" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        insert into cost(description, date, amount, id_category)
-        values(#{description}, #{date}, #{amount}, (select id from category where type = #{category}))
+        INSERT INTO cost(description, date, amount, id_category)
+        VALUES(#{description}, #{date}, #{amount}, (SELECT id FROM category WHERE type = #{category}))
     </insert>
+
+    <delete id="delete">
+        DELETE FROM cost WHERE id = #{id}
+    </delete>
 
 </mapper>

@@ -20,6 +20,11 @@ public class Cost implements Audit {
         this.description = description;
     }
 
+    public Cost(BigDecimal amount, Category.Type category, String description, DateTime date) {
+        this(amount, category, description);
+        this.date = date;
+    }
+
     @Override
     public Integer getId() {
         return id;
