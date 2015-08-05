@@ -4,6 +4,7 @@ import nrv.costs.dao.statistics.StatisticsDao;
 import nrv.costs.domain.Category;
 import nrv.costs.domain.Cost;
 import nrv.costs.domain.statistics.CostStatistics;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,30 @@ public class CostStatisticsService extends BaseStatisticsService<Cost, CostStati
     @Override
     public CostStatistics getByCategory(Category.Type category) {
         List<Cost> costs = statisticsDao.getByCategory(category);
+        return getStatistics(costs);
+    }
+
+    @Override
+    public CostStatistics getFromDate(DateTime from) {
+        List<Cost> costs = getFromDateList(from);
+        return getStatistics(costs);
+    }
+
+    @Override
+    public CostStatistics getForCurrentWeek() {
+        List<Cost> costs = getForCurrentWeekList();
+        return getStatistics(costs);
+    }
+
+    @Override
+    public CostStatistics getForMonth(DateTime startMonthDate) {
+        List<Cost> costs = getForMonthList(startMonthDate);
+        return getStatistics(costs);
+    }
+
+    private CostStatistics getStatistics(List<Cost> costs) {
         BigDecimal amountSum = calculateAmountSum(costs);
         return new CostStatistics(costs, amountSum);
     }
+
 }

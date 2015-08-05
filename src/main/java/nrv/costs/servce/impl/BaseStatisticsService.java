@@ -10,25 +10,24 @@ import org.joda.time.LocalTime;
 import java.math.BigDecimal;
 import java.util.List;
 
-public abstract class BaseStatisticsService<T extends Audit, V extends Statistics> implements StatisticsService<T, V> {
+public abstract class BaseStatisticsService<T extends Audit, V extends Statistics> implements StatisticsService<V> {
 
     protected StatisticsDao<T> statisticsDao;
 
     protected abstract void setStatisticsDao(StatisticsDao<T> statisticsDao);
 
-    @Override
-    public List<T> getFromDate(DateTime from) {
+
+
+    protected List<T> getFromDateList(DateTime from) {
         return statisticsDao.getFromToDate(from, new DateTime());
     }
 
-    @Override
-    public List<T> getForCurrentWeek() {
+    protected List<T> getForCurrentWeekList() {
         DateInterval week = get4Week();
         return statisticsDao.getFromToDate(week.from, week.to);
     }
 
-    @Override
-    public List<T> getForMonth(DateTime startMonthDate) { //  todo may be int month
+    protected List<T> getForMonthList(DateTime startMonthDate) { //  todo may be int month
         DateInterval month = get4Month(startMonthDate);
         return statisticsDao.getFromToDate(month.from, month.to);
     }
