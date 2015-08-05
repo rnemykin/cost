@@ -6,7 +6,6 @@ import nrv.costs.domain.Cost;
 import nrv.costs.domain.statistics.CostStatistics;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -18,9 +17,9 @@ public class CostStatisticsService extends BaseStatisticsService<Cost, CostStati
 
     @Override
     @Autowired
-    @Qualifier("costStatisticsDao")
-    public void setStatisticsDao(StatisticsDao<Cost> statisticsDao) {
-        this.statisticsDao = statisticsDao;
+//    @Qualifier("costStatisticsDao")
+    public void setStatisticsDao(StatisticsDao<Cost> costStatisticsDao) {
+        this.statisticsDao = costStatisticsDao;
     }
 
 
