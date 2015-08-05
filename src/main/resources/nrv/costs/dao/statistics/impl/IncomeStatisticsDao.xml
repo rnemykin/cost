@@ -8,7 +8,6 @@
         <result property="date" column="date"/>
         <result property="amount" column="amount"/>
     </resultMap>
-assad
 
     <sql id="baseSelect">
         SELECT

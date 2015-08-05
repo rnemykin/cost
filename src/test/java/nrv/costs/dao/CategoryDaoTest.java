@@ -13,7 +13,7 @@ public class CategoryDaoTest extends RollBackTransactionTest {
 
     @Test
     public void testInsert() {
-        int id = dao.insert(new Category(Category.Type.CELEBRATION, "Праздники"));
+        int id = dao.insert(new Category(Category.Type.OTHER, "Другое, разное"));
         Assert.assertNotNull("Id is null", id);
     }
 }

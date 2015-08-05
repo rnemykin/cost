@@ -24,7 +24,7 @@ public class Category {
         CELEBRATION,
         INTERNET,
         MOBILE_NET,
-        SPORT
+        OTHER, SPORT
     }
 
     public Integer getId() {
