@@ -7,16 +7,24 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class IncomeStatistics implements Statistics {
-    private List<Income> income;
+    private List<Income> incomes;
     private BigDecimal amountSum;
 
-
-    public List<Income> getCosts() {
-        return income;
+    public IncomeStatistics() {
     }
 
-    public void setCosts(List<Income> income) {
-        this.income = income;
+    public IncomeStatistics(List<Income> incomes, BigDecimal amountSum) {
+        this.incomes = incomes;
+        this.amountSum = amountSum;
+    }
+
+
+    public List<Income> getIncomes() {
+        return incomes;
+    }
+
+    public void setIncomes(List<Income> incomes) {
+        this.incomes = incomes;
     }
 
     public BigDecimal getAmountSum() {

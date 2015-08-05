@@ -9,6 +9,9 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 
 @Service
 public class IncomeStatisticsService extends BaseStatisticsService<Income, IncomeStatistics> {
@@ -22,21 +25,29 @@ public class IncomeStatisticsService extends BaseStatisticsService<Income, Incom
 
     @Override
     public IncomeStatistics getByCategory(Category.Type category) {
-        return null;
+        return new IncomeStatistics();
     }
 
     @Override
     public IncomeStatistics getFromDate(DateTime from) {
-        return null;
+        List<Income> incomes = getFromDateList(from);
+        return getStatistics(incomes);
     }
 
     @Override
     public IncomeStatistics getForCurrentWeek() {
-        return null;
+        List<Income> incomes = getForCurrentWeekList();
+        return getStatistics(incomes);
     }
 
     @Override
     public IncomeStatistics getForMonth(DateTime startMonthDate) {
-        return null;
+        List<Income> incomes = getFromDateList(startMonthDate);
+        return getStatistics(incomes);
+    }
+
+    private IncomeStatistics getStatistics(List<Income> incomes) {
+        BigDecimal amountSum = calculateAmountSum(incomes);
+        return new IncomeStatistics(incomes, amountSum);
     }
 }

@@ -17,7 +17,6 @@ public abstract class BaseStatisticsService<T extends Audit, V extends Statistic
     protected abstract void setStatisticsDao(StatisticsDao<T> statisticsDao);
 
 
-
     protected List<T> getFromDateList(DateTime from) {
         return statisticsDao.getFromToDate(from, new DateTime());
     }

@@ -17,7 +17,6 @@ public class CostStatisticsService extends BaseStatisticsService<Cost, CostStati
 
     @Override
     @Autowired
-//    @Qualifier("costStatisticsDao")
     public void setStatisticsDao(StatisticsDao<Cost> costStatisticsDao) {
         this.statisticsDao = costStatisticsDao;
     }
