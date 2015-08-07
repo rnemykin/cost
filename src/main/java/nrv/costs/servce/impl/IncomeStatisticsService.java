@@ -10,11 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
 public class IncomeStatisticsService extends BaseStatisticsService<Income, IncomeStatistics> {
+
+    private static final Set<Category.Type> INCOME_CATEGORY_SET = Collections.unmodifiableSet(
+            new HashSet<>()
+    )
+
 
     @Override
     @Autowired
@@ -25,6 +33,8 @@ public class IncomeStatisticsService extends BaseStatisticsService<Income, Incom
 
     @Override
     public IncomeStatistics getByCategory(Category.Type category) {
+        if(category.)
+
         return new IncomeStatistics();
     }
 

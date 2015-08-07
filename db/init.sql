@@ -19,7 +19,9 @@ CREATE TABLE income
   id INTEGER PRIMARY KEY,
   date DATETIME NOT NULL,
   amount REAL NOT NULL,
-  description TEXT NULL
+  description TEXT NULL,
+  id_category INTEGER NOT NULL,
+  FOREIGN KEY (id_category) REFERENCES category(id) on delete CASCADE
 );
 
 -- data

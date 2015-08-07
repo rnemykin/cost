@@ -10,14 +10,18 @@ public class Income implements Audit {
     private BigDecimal amount;
     private DateTime date = new DateTime();
     private String description;
+    private Category.Type category;
 
-
-    public Income() {
-    }
 
     public Income(BigDecimal amount, String description) {
+
+    }
+
+    public Income(BigDecimal amount, Category.Type category, String description, DateTime date) {
         this.amount = amount;
+        this.category = category;
         this.description = description;
+        this.date = date;
     }
 
 
@@ -55,5 +59,13 @@ public class Income implements Audit {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Category.Type getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category.Type category) {
+        this.category = category;
     }
 }

@@ -7,12 +7,14 @@
         <result property="description" column="description"/>
         <result property="date" column="date"/>
         <result property="amount" column="amount"/>
+        <result property="category" column="type"/>
     </resultMap>
 
     <sql id="baseSelect">
         SELECT
-          i.id, i.date, i.description, i.amount
+          i.id, i.date, i.description, i.amount, cat.type
         FROM income i
+        join category cat on i.id_category=cat.id
     </sql>
 
     <select id="getByCategory" parameterType="string" resultMap="incomeMap">

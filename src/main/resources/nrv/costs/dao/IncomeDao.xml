@@ -4,8 +4,8 @@
 <mapper namespace="nrv.costs.dao.IncomeDao">
 
     <insert id="insert" parameterType="nrv.costs.domain.Income" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        insert into income(amount, date)
-        values(#{amount}, #{date})
+        insert into income(amount, date, id_category)
+        values(#{amount}, #{date}, (SELECT id FROM category WHERE type = #{category}))
     </insert>
 
 </mapper>
