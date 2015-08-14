@@ -22,4 +22,9 @@ public class CostStatisticsServiceTest extends BaseTest {
     public void getForCurrentWeek() throws Exception {
         CostStatistics forCurrentWeek = costStatisticsService.getForCurrentWeek();
     }
+
+    @Test
+    public void getFromWeek() throws Exception {
+        CostStatistics forCurrentWeek = costStatisticsService.getFromDate(FORMATTER.parseDateTime("01-08-2015"));
+    }
 }

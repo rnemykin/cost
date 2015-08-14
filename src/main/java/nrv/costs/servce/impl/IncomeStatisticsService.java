@@ -10,18 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
 public class IncomeStatisticsService extends BaseStatisticsService<Income, IncomeStatistics> {
 
     private static final Set<Category.Type> INCOME_CATEGORY_SET = Collections.unmodifiableSet(
-            new HashSet<>()
-    )
+            new HashSet<>(Arrays.asList(Category.Type.SALARY))
+    );
 
 
     @Override
@@ -31,11 +28,16 @@ public class IncomeStatisticsService extends BaseStatisticsService<Income, Incom
     }
 
 
+    /**
+     * throws exception if @category not in INCOME_CATEGORY_SET
+     */
     @Override
     public IncomeStatistics getByCategory(Category.Type category) {
-        if(category.)
+        if(!INCOME_CATEGORY_SET.contains(category))
+            throw new IllegalArgumentException("For income statistics category can't be " + category);
 
-        return new IncomeStatistics();
+        List<Income> incomes = statisticsDao.getByCategory(category);
+        return getStatistics(incomes);
     }
 
     @Override

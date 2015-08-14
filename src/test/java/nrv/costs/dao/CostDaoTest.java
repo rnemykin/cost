@@ -17,8 +17,8 @@ public class CostDaoTest extends BaseTest {
 
     @Test
     public void testInsert() {
-        DateTime dt = FORMATTER.parseDateTime("4-08-2015");
-        int id = dao.insert(new Cost(BigDecimal.valueOf(600), Category.Type.ENTERTAINMENT, "Баня"));
+        DateTime dt = FORMATTER.parseDateTime("09-08-2015");
+        int id = dao.insert(new Cost(BigDecimal.valueOf(800), Category.Type.ENTERTAINMENT, "Рабылка, день строителя, бензин",dt));
         Assert.assertNotNull("Id is null", id);
     }
 
